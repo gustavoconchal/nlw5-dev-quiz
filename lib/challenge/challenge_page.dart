@@ -1,6 +1,5 @@
 import 'package:dev_quiz/challenge/widgets/question_indicator_widget/question_indicator_widget.dart';
 import 'package:dev_quiz/challenge/widgets/quiz/quiz_widget.dart';
-import 'package:dev_quiz/home/widgets/quiz_card/quiz_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class ChallengePage extends StatefulWidget {

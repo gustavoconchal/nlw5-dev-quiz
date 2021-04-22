@@ -1,8 +1,11 @@
 import 'package:dev_quiz/home/widgets/quiz_card/quiz_card_widget.dart';
+import 'package:dev_quiz/shared/models/quiz_model.dart';
 import 'package:flutter/material.dart';
 
 class QuizCardGridViewWidget extends StatelessWidget {
-  const QuizCardGridViewWidget({Key? key}) : super(key: key);
+  final List<QuizModel> quizzes;
+  const QuizCardGridViewWidget({Key? key, required this.quizzes})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +15,11 @@ class QuizCardGridViewWidget extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 6,
               mainAxisSpacing: 6,
-              children: [
-            QuizCardWidget(),
-            QuizCardWidget(),
-            QuizCardWidget(),
-            QuizCardWidget(),
-            QuizCardWidget(),
-            QuizCardWidget(),
-            QuizCardWidget(),
-            QuizCardWidget()
-          ])),
+              children: quizzes
+                  .map((e) => QuizCardWidget(
+                        quiz: e,
+                      ))
+                  .toList())),
     );
   }
 }

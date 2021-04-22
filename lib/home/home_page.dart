@@ -1,7 +1,8 @@
+import 'package:dev_quiz/core/app_colors.dart';
+import 'package:dev_quiz/home/home_controller.dart';
+import 'package:dev_quiz/home/home_state.dart';
 import 'package:dev_quiz/home/widgets/app_bar/app_bar_widget.dart';
-import 'package:dev_quiz/home/widgets/level_button/level_button_widget.dart';
 import 'package:dev_quiz/home/widgets/level_button_row/level_button_row_widget.dart';
-import 'package:dev_quiz/home/widgets/quiz_card/quiz_card_widget.dart';
 import 'package:dev_quiz/home/widgets/quiz_card_grid_view/quiz_card_grid_view_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -13,25 +14,49 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = HomeController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getUser();
+    controller.getQuizzes();
+    controller.stateNotifier.addListener(() {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarWidget(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 24,
-            ),
-            LevelButtonRowWidget(),
-            SizedBox(
-              height: 24,
-            ),
-            QuizCardGridViewWidget()
-          ],
+    if (controller.state == HomeState.success) {
+      return Scaffold(
+        appBar: AppBarWidget(user: controller.user!),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 24,
+              ),
+              LevelButtonRowWidget(),
+              SizedBox(
+                height: 24,
+              ),
+              QuizCardGridViewWidget(
+                quizzes: controller.quizzes!,
+              )
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation(AppColors.darkGreen),
+          ),
+        ),
+      );
+    }
   }
 }
