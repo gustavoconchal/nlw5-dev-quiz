@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class NextButtonWidget extends StatelessWidget {
   final bool confirm;
+  final VoidCallback onTap;
 
   const NextButtonWidget({
     Key? key,
     required this.confirm,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -18,7 +20,7 @@ class NextButtonWidget extends StatelessWidget {
         style: confirm
             ? AppButtonStyles.buttonConfirm
             : AppButtonStyles.buttonSkip,
-        onPressed: () {},
+        onPressed: onTap,
         child: Text(
           confirm ? "Confirmar" : "Pular",
           style:

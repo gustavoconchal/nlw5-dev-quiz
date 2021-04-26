@@ -23,7 +23,8 @@ class QuizCardGridViewWidget extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ChallengePage()));
+                                  builder: (context) =>
+                                      ChallengePage(questions: e.questions)));
                         },
                       ))
                   .toList())),
