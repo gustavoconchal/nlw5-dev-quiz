@@ -1,9 +1,9 @@
 import 'package:dev_quiz/core/app_colors.dart';
 import 'package:dev_quiz/home/home_controller.dart';
-import 'package:dev_quiz/home/home_state.dart';
 import 'package:dev_quiz/home/widgets/app_bar/app_bar_widget.dart';
 import 'package:dev_quiz/home/widgets/level_button_row/level_button_row_widget.dart';
 import 'package:dev_quiz/home/widgets/quiz_card_grid_view/quiz_card_grid_view_widget.dart';
+import 'package:dev_quiz/shared/enum_state.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.state == HomeState.success) {
+    if (controller.state == EnumState.success) {
       return Scaffold(
         appBar: AppBarWidget(user: controller.user!),
         body: Padding(

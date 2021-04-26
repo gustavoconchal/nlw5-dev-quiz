@@ -1,3 +1,4 @@
+import 'package:dev_quiz/challenge/challenge_page.dart';
 import 'package:dev_quiz/home/widgets/quiz_card/quiz_card_widget.dart';
 import 'package:dev_quiz/shared/models/quiz_model.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,12 @@ class QuizCardGridViewWidget extends StatelessWidget {
               children: quizzes
                   .map((e) => QuizCardWidget(
                         quiz: e,
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChallengePage()));
+                        },
                       ))
                   .toList())),
     );

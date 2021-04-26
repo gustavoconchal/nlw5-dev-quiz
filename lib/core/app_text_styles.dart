@@ -91,9 +91,28 @@ class AppTextStyles {
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
+
+  static final TextStyle bodyWhite15 = GoogleFonts.notoSans(
+    color: AppColors.white,
+    fontSize: 15,
+    fontWeight: FontWeight.normal,
+  );
+
   static final TextStyle body11 = GoogleFonts.notoSans(
     color: AppColors.grey,
     fontSize: 11,
     fontWeight: FontWeight.normal,
+  );
+
+  static final TextStyle buttonConfirm = GoogleFonts.notoSans(
+    color: AppColors.white,
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+  );
+
+  static final TextStyle buttonSkip = GoogleFonts.notoSans(
+    color: AppColors.lightGrey,
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
   );
 }
